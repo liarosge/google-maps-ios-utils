@@ -35,7 +35,13 @@
         else {
             marker.icon = cluster.marker.icon;
         }
-        
+        if(count == 1){
+            marker.title = cluster.marker.title;
+            marker.tappable = YES;
+        }
+        else{
+            marker.tappable = NO;
+        }
         marker.userData = cluster.marker.userData;
         
         marker.position = cluster.marker.position;
