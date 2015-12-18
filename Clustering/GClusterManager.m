@@ -59,6 +59,10 @@
     // Don't re-compute clusters if the map has just been panned/tilted/rotated.
     GMSCameraPosition *position = [mapView camera];
     if (previousCameraPosition != nil && previousCameraPosition.zoom == position.zoom) {
+        if ([self delegate] != nil
+            && [self.delegate respondsToSelector:@selector(mapView:idleAtCameraPosition:)]) {
+            [self.delegate mapView:mapView idleAtCameraPosition:cameraPosition];
+        }
         return;
     }
     previousCameraPosition = [mapView camera];
