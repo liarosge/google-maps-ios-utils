@@ -81,7 +81,9 @@
                     fontColor, (id)kCTForegroundColorAttributeName, nil];
 
     // create a naked string
-    NSString *string = [[NSString alloc] initWithFormat:@"%lu", (unsigned long)count];
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    NSNumber *countNumber = [NSNumber numberWithUnsignedInteger:count];
+    NSString *string = [formatter stringFromNumber:countNumber];
 
     NSAttributedString *stringToDraw = [[NSAttributedString alloc] initWithString:string
                                                                        attributes:attributesDict];
